@@ -1,0 +1,32 @@
+﻿@model LogistikApp.Models.Shipment
+
+@{
+    ViewData["Title"] = "Create Shipment";
+}
+
+<h2>Create Shipment</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label>No Resi</label>
+        <input asp-for="NoResi" class="form-control" />
+    </div>
+
+    <h4>Sender Info</h4>
+    <input asp-for="Sender.S_Name" class="form-control" placeholder="Name" />
+    <input asp-for="Sender.S_Tlp" class="form-control" placeholder="Phone" />
+    <input asp-for="Sender.S_Address" class="form-control" placeholder="Address" />
+    <input asp-for="Sender.S_PostCode" class="form-control" placeholder="PostCode" />
+
+    <h4>Recipient Info</h4>
+    <input asp-for="Recipient.R_Name" class="form-control" placeholder="Name" />
+    <input asp-for="Recipient.R_Tlp" class="form-control" placeholder="Phone" />
+    <input asp-for="Recipient.R_Address" class="form-control" placeholder="Address" />
+    <input asp-for="Recipient.R_PostCode" class="form-control" placeholder="PostCode" />
+
+    <h4>Package Info</h4>
+    <input asp-for="Package.Weight" class="form-control" placeholder="Weight" />
+    <input asp-for="Package.Dimension" class="form-control" placeholder="Dimension" />
+
+    <button type="submit" class="btn btn-primary mt-3">Save</button>
+</form>

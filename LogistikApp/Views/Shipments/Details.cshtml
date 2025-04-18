@@ -1,0 +1,31 @@
+﻿@model Shipment
+
+@{
+    ViewData["Title"] = "Shipment Details";
+}
+
+<h1>Shipment Details</h1>
+
+<div>
+    <h4>Shipment: @Model.NoResi</h4>
+    <p><strong>Sender:</strong> @Model.Sender.S_Name</p>
+    <p><strong>Recipient:</strong> @Model.Recipient.R_Name</p>
+    <p><strong>Status History:</strong></p>
+
+    <ul>
+        @foreach (var status in Model.StatusHistory)
+        {
+            <li>@status.Status - @status.StatusDate</li>
+        }
+    </ul>
+
+    <form method="post" action="@Url.Action("UpdateStatus", new { noResi = Model.NoResi })">
+        <label for="status">Update Status:</label>
+        <select id="status" name="status">
+            <option value="PickUp">Pick Up</option>
+            <option value="OnDelivery">On Delivery</option>
+            <option value="POD">Proof of Delivery</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Update Status</button>
+    </form>
+</div>

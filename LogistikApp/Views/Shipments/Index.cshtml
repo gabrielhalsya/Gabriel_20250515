@@ -1,0 +1,35 @@
+﻿@model IEnumerable<LogistikApp.Models.Shipment>
+
+@{
+    ViewData["Title"] = "Shipments";
+}
+
+<h2>@ViewData["Title"]</h2>
+<p>
+    <a href="@Url.Action("Create", "Shipments")" class="btn btn-success">Create New Shipment</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>No Resi</th>
+            <th>Sender</th>
+            <th>Recipient</th>
+            <th>Package Weight</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var shipment in Model)
+        {
+            <tr>
+                <td>@shipment.NoResi</td>
+                <td>@shipment.Sender.S_Name</td>
+                <td>@shipment.Recipient.R_Name</td>
+                <td>@shipment.Package.Weight</td>
+                <td>
+                    <a href="@Url.Action("Details", "Shipments", new { noResi = shipment.NoResi })">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
